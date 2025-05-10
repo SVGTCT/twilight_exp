@@ -535,7 +535,6 @@ on-arrival: communist_coalition = 3
 go-to: menu
 
 @stateleadervar
-go-to: menu
 on-arrival: {!
 
 Q.lab_round = 1;
@@ -543,7 +542,7 @@ Q.total_strength = Q.left_strength + Q.labour_strength + Q.reformist_strength + 
 
 // for attlee
 Q.attlee_runs = 1;
-Q.attlee_percentage = (Q.pragmatist_strength*1.5 + Q.reformist_strength/3 + Q.labour_strength/3 + Q.left_strength/3*2)/Q.total_strength;
+Q.attlee_percentage = ((Q.pragmatist_strength*1.5) + (Q.reformist_strength/3) + (Q.labour_strength/3) + (Q.left_strength/3*2))/Q.total_strength;
 
 // for greenwood
 if (Q.pragmatist_strength > Q.labour_strength) {
@@ -578,6 +577,65 @@ Q.greenwood_disp = (Q.greenwood_percentage * 100).toFixed(1);
 
 !}
 
+[+ lab_round +] (voting round)
+
+[+ total_strength +] (total strength)
+
+[+ attlee_runs +] (does attlee run)
+
+[+ attlee_percentage +] (attlee percentage): [+ attlee_disp +]%
+
+[+ greenwood_runs +] (does greenwood run)
+
+[+ greenwood_percentage +] (greenwood percentage): [+ greenwood_disp +]%
+
+[+ morrison_runs +] (does morrison run)
+
+[+ morrison_percentage +] (morrison percentage): [+ morrison_disp +]%
+
+[+ total_percentage +] (total percentage)
+
+- @take_2: take 2
+
+@take_2
+go-to: menu
+on-arrival: {!
+
+Q.lab_round = 2;
+
+if (Q.attlee_percentage < Q.greenwood_percentage && Q.attlee_percentage < Q.morrison_percentage) {
+    Q.attlee_runs = 0;
+    Q.greenwood_percentage += Q.labour_strength/3/Q.total_strength;
+    Q.morrison_percentage += Q.attlee_percentage - Q.labour_strength/3/Q.total_strength;
+    Q.attlee_percentage = 0;
+    Q.last_place = "Attlee";
+}
+else if (Q.greenwood_percentage < Q.attlee_percentage && Q.greenwood_percentage < Q.morrison_percentage) {
+    Q.greenwood_runs = 0;
+    Q.attlee_percentage += Q.greenwood_percentage;
+    Q.greenwood_percentage = 0;
+    Q.last_place = "Greenwood";
+}
+else {
+    Q.morrison_runs = 0;
+    Q.attlee_percentage += Q.morrison_percentage/2
+    Q.morrison_percentage = 0;
+    Q.last_place = "Morrison";
+}
+
+Q.total_percentage = Q.attlee_percentage + Q.greenwood_percentage + Q.morrison_percentage
+
+if (Q.total_percentage != 1) {
+    Q.attlee_percentage = Q.attlee_percentage/Q.total_percentage;
+    Q.morrison_percentage = Q.morrison_percentage/Q.total_percentage;
+    Q.greenwood_percentage = Q.greenwood_percentage/Q.total_percentage;
+}
+
+Q.attlee_disp = (Q.attlee_percentage * 100).toFixed(1);
+Q.morrison_disp = (Q.morrison_percentage * 100).toFixed(1);
+Q.greenwood_disp = (Q.greenwood_percentage * 100).toFixed(1);
+
+!}
 [+ lab_round +] (voting round)
 
 [+ total_strength +] (total strength)
