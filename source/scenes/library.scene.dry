@@ -636,6 +636,7 @@ Q.morrison_disp = (Q.morrison_percentage * 100).toFixed(1);
 Q.greenwood_disp = (Q.greenwood_percentage * 100).toFixed(1);
 
 !}
+
 [+ lab_round +] (voting round)
 
 [+ total_strength +] (total strength)
