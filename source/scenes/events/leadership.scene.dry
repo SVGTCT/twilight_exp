@@ -1,6 +1,6 @@
 title: Labour Party Leadership Election
 subtitle: Our MPs will elect the next party leader...
-view-if: year = 1935 and month = 1
+view-if: year = 1935 and month = 2
 tags: event
 on-arrival: {!
 
