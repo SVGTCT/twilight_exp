@@ -582,9 +582,9 @@ Q.greenwood_disp = (Q.greenwood_percentage * 100).toFixed(1);
 
 [+ total_strength +] (total strength)
 
-[+ atlee_runs +] (does attlee run)
+[+ attlee_runs +] (does attlee run)
 
-[+ atlee_percentage +] (attlee percentage): [+ attlee_disp +]%
+[+ attlee_percentage +] (attlee percentage): [+ attlee_disp +]%
 
 [+ greenwood_runs +] (does greenwood run)
 
