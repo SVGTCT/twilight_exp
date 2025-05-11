@@ -59,6 +59,8 @@ new-page: true
 
 It is now time for the party's representation in the House of Commons to elect a new party leader after the general election. Since Lansbury stood down as leader, Clement Attlee has served in the position. As this has been on an interim basis, it means he will very likely face a challenger. [? if lab_c > old_lab_c: This is especially true after the Party increased its representation in the House of Commons. ?]
 
+Strength: [ + left_strength +] (left), [+ labour_strength +] (labour), [+ reformist_strength +] (reformist), [+ pragmatist_strength +] (pragmatist), [+ cooperative_strength +] (cooperative)
+
 [+ lab_round +] (voting round)
 
 [+ total_strength +] (total strength)
