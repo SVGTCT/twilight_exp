@@ -7,6 +7,10 @@ on-arrival: {!
 Q.lab_round = 1;
 Q.total_strength = Q.left_strength + Q.labour_strength + Q.reformist_strength + (Q.pragmatist_strength*2) + Q.cooperative_strength;
 
+while (Q.total_strength == 0) {
+    Q.total_strength = Q.left_strength + Q.labour_strength + Q.reformist_strength + (Q.pragmatist_strength*2) + Q.cooperative_strength;
+}
+
 // for attlee
 Q.attlee_runs = 1;
 Q.attlee_percentage = ((Q.pragmatist_strength*1.5) + (Q.reformist_strength/3) + (Q.labour_strength/3) + (Q.left_strength/3*2))/Q.total_strength;
